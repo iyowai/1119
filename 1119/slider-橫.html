@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<style>
+    img {
+        width: 100%;
+    }
+
+    .slider {
+        width: 800px;
+        height: 400px;
+        margin: auto;
+    }
+
+    .wrapper {
+        /*width:  3200px;*/
+    }
+
+    .slider .photo {
+        width: 800px;
+        height: 400px;
+        float: left;
+
+    }
+
+</style>
+
+<script src="jquery-1.12.4.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var currentPosition = 0;
+        var photoWidth = 800;
+        var photo = $(".photo");
+        var photoNum = $(".photo").length;
+        console.log(photoWidth * currentPosition);
+
+        var timeout = 3000;
+        var speed = 1200;
+
+        $(".wrapper").css("width", photoWidth * photoNum);
+
+        //    動畫
+        function move() {
+            $(".wrapper").animate({
+                "marginLeft": -(photoWidth * currentPosition)
+            }, speed);
+        }
+
+        function cycle() {
+            if (currentPosition == photoNum - 1) {
+                currentPosition = 0;
+            } else {
+                currentPosition++;
+            }
+            move();
+        }
+        setInterval(cycle, timeout);
+
+    })
+
+</script>
+
+<body>
+    <div class="slider">
+        <div class="wrapper">
+            <div class="photo">
+                <img src="../1119/img/photo7.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="../1119/img/photo6.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="../1119/img/photo3.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="../1119/img/photo7.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>
